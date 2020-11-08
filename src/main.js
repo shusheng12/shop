@@ -16,15 +16,15 @@ import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 
 //引入$Bus
-Vue.prototype.$bus=new Vue()
+Vue.prototype.$bus = new Vue()
 
 //全局过滤器
-import Filters from '@utils//Filters';
+import Filters from '@/utils//Filters';
 for (let k in Filters) {
   Vue.filter(k, Filters[k]);
 }
 //时间过滤器
-Vue.filter('dateFormat', (originVal)=>{
+Vue.filter('dateFormat', (originVal) => {
   const dt = new Date(originVal)
   const y = dt.getFullYear()
   const m = (dt.getMonth() + 1 + '').padStart(2, '0')
