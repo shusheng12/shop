@@ -1,38 +1,55 @@
 <template>
   <div>
-      <el-card class="el1">
-        <div class="flex-fa">
-          <div class="header-ml">
-            目录
+    <el-card class="el1">
+      <div class="flex-fa">
+        <div class="header-ml">目录</div>
+        <div class="header-icon">
+          <el-tooltip class="item" effect="dark" content="添加" placement="top">
+            <img
+              src="@/assets/img/添加 copy 4.png"
+              class="xg-icon"
+              alt="添加"
+              @click="operateData('new')"
+            />
+          </el-tooltip>
+        </div>
+      </div>
+      <div>
+        <div v-for="i in 2" :key="i" class="form-item">
+          <div class="left-icon">
+            <i class="el-icon-document" @click="operateData('new')" />
           </div>
-          <div class="header-icon">
-            <el-tooltip class="item" effect="dark" content="添加" placement="top">
-              <img src="@/assets/img/添加 copy 4.png" class="xg-icon " alt="添加" @click="operateData('new')">
+          <span>您有一条未读消息</span>
+          <div class="right-icon">
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="内置表单"
+              placement="right"
+            >
+              <img
+                src="@/assets/img/系统内置事件20px.png"
+                class="xg-icon"
+                alt="添加"
+              />
             </el-tooltip>
           </div>
         </div>
-        <div>
-          <div v-for="i in 10" :key="i" class="form-item">
-            <div class="left-icon">
-              <i class="el-icon-document" @click="operateData('new')" />
-            </div>
-            <span>asdasdasd</span>
-            <div class="right-icon">
-              <el-tooltip class="item" effect="dark" content="内置表单" placement="right">
-                <img src="@/assets/img/系统内置事件20px.png" class="xg-icon " alt="添加">
-              </el-tooltip>
-            </div>
+        <div v-for="i in 2" :key="i" class="form-item">
+          <div class="left-icon">
+            <i class="el-icon-document" />
           </div>
-          <div v-for="i in 2" :key="i" class="form-item">
-            <div class="left-icon">
-              <i class="el-icon-document" />
-            </div>
-            <span>asdasdasd</span>
-          </div>
+          <span>已读消息</span>
         </div>
-      </el-card> 
+      </div>
+    </el-card>
     <!-- 弹窗2 -->
-    <el-dialog title="新增校验规则" :visible.sync="dialogFormVisible" width="680px" class="alert">
+    <el-dialog
+      title="新增校验规则"
+      :visible.sync="dialogFormVisible"
+      width="680px"
+      class="alert"
+    >
       <el-form :model="form" label-width="160px">
         <el-form-item label="校验字段：" prop="pass">
           <div class="input-margin">
@@ -51,16 +68,26 @@
           </el-radio-group>
         </el-form-item>
         <!-- 校验公式预览 -->
-        <div v-if="radio===3" class="border-sty">
+        <div v-if="radio === 3" class="border-sty">
           <el-form-item label="校验公式预览：" prop="pass" label-width="160px">
             <div class="jygs-margin">
               <span>{xxxx值}*5>{yyyy值}</span>
-              <el-input v-model="input3" placeholder="公式文本分析" size="mini" class="tjsx-form-select3" />
+              <el-input
+                v-model="input3"
+                placeholder="公式文本分析"
+                size="mini"
+                class="tjsx-form-select3"
+              />
             </div>
           </el-form-item>
           <el-form-item label="公式左侧：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -69,7 +96,12 @@
                 />
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-right">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-right"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -79,18 +111,28 @@
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
               <div class="img-sty">
-                <img src="@/assets/img/添加 copy 4.png" alt="添加">
+                <img src="@/assets/img/添加 copy 4.png" alt="添加" />
               </div>
             </div>
           </el-form-item>
           <el-form-item label="公式判断符号：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-input v-model="input3" placeholder="公式文本分析" size="mini" class="tjsx-form-select3" />
+              <el-input
+                v-model="input3"
+                placeholder="公式文本分析"
+                size="mini"
+                class="tjsx-form-select3"
+              />
             </div>
           </el-form-item>
           <el-form-item label="公式左侧：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -99,7 +141,12 @@
                 />
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-right">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-right"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -109,16 +156,21 @@
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
               <div class="img-sty">
-                <img src="@/assets/img/添加 copy 4.png" alt="添加">
+                <img src="@/assets/img/添加 copy 4.png" alt="添加" />
               </div>
             </div>
           </el-form-item>
         </div>
         <!-- 唯一性组合 -->
-        <div v-else-if="radio===6" class="border-sty">
+        <div v-else-if="radio === 6" class="border-sty">
           <el-form-item label="公式左侧：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -128,16 +180,21 @@
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
               <div class="img-sty2">
-                <img src="@/assets/img/添加 copy 4.png" alt="添加">
+                <img src="@/assets/img/添加 copy 4.png" alt="添加" />
               </div>
             </div>
           </el-form-item>
         </div>
         <!-- 关联表1 -->
-        <div v-if="radio===7" class="border-sty">
+        <div v-if="radio === 7" class="border-sty">
           <el-form-item label="关联表：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -152,12 +209,22 @@
           <el-form-item label="校验公式预览：" prop="pass" label-width="160px">
             <div class="jygs-margin">
               <span>{xxxx值}*5>{yyyy值}</span>
-              <el-input v-model="input3" placeholder="公式文本分析" size="mini" class="tjsx-form-select3" />
+              <el-input
+                v-model="input3"
+                placeholder="公式文本分析"
+                size="mini"
+                class="tjsx-form-select3"
+              />
             </div>
           </el-form-item>
           <el-form-item label="公式左侧：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -166,7 +233,12 @@
                 />
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-right">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-right"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -176,18 +248,28 @@
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
               <div class="img-sty">
-                <img src="@/assets/img/添加 copy 4.png" alt="添加">
+                <img src="@/assets/img/添加 copy 4.png" alt="添加" />
               </div>
             </div>
           </el-form-item>
           <el-form-item label="公式判断符号：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-input v-model="input3" placeholder="公式文本分析" size="mini" class="tjsx-form-select3" />
+              <el-input
+                v-model="input3"
+                placeholder="公式文本分析"
+                size="mini"
+                class="tjsx-form-select3"
+              />
             </div>
           </el-form-item>
           <el-form-item label="公式左侧：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -196,7 +278,12 @@
                 />
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-right">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-right"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -206,16 +293,21 @@
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
               <div class="img-sty">
-                <img src="@/assets/img/添加 copy 4.png" alt="添加">
+                <img src="@/assets/img/添加 copy 4.png" alt="添加" />
               </div>
             </div>
           </el-form-item>
         </div>
         <!-- 关联表2 -->
-        <div v-if="radio===9" class="border">
+        <div v-if="radio === 9" class="border">
           <el-form-item label="关联表：" prop="pass" label-width="160px">
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -232,9 +324,18 @@
               <span>表1—3</span>
             </div>
           </el-form-item>
-          <el-form-item label="当前表不可重复字段：" prop="pass" label-width="160px">
+          <el-form-item
+            label="当前表不可重复字段："
+            prop="pass"
+            label-width="160px"
+          >
             <div class="jygs-margin">
-              <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+              <el-select
+                v-model="value1"
+                placeholder="请选择"
+                size="mini"
+                class="select-left"
+              >
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -244,7 +345,7 @@
                 <el-select v-model="value1" placeholder="请选择" size="mini" />
               </el-select>
               <div class="img-sty1">
-                <img src="@/assets/img/添加 copy 4.png" alt="添加">
+                <img src="@/assets/img/添加 copy 4.png" alt="添加" />
               </div>
             </div>
           </el-form-item>
@@ -252,40 +353,61 @@
             <div class="border-background1">
               <el-form-item label="关联表：" prop="pass" label-width="160px">
                 <div class="jygs-margin">
-                  <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+                  <el-select
+                    v-model="value1"
+                    placeholder="请选择"
+                    size="mini"
+                    class="select-left"
+                  >
                     <el-option
                       v-for="item in options"
                       :key="item.value"
                       :label="item.label"
                       :value="item.value"
                     />
-                    <el-select v-model="value1" placeholder="请选择" size="mini" />
+                    <el-select
+                      v-model="value1"
+                      placeholder="请选择"
+                      size="mini"
+                    />
                   </el-select>
                 </div>
               </el-form-item>
-              <el-form-item label="当前表不可重复字段：" prop="pass" label-width="160px">
+              <el-form-item
+                label="当前表不可重复字段："
+                prop="pass"
+                label-width="160px"
+              >
                 <div class="jygs-margin">
-                  <el-select v-model="value1" placeholder="请选择" size="mini" class="select-left">
+                  <el-select
+                    v-model="value1"
+                    placeholder="请选择"
+                    size="mini"
+                    class="select-left"
+                  >
                     <el-option
                       v-for="item in options"
                       :key="item.value"
                       :label="item.label"
                       :value="item.value"
                     />
-                    <el-select v-model="value1" placeholder="请选择" size="mini" />
+                    <el-select
+                      v-model="value1"
+                      placeholder="请选择"
+                      size="mini"
+                    />
                   </el-select>
                   <div class="img-sty3">
-                    <img src="@/assets/img/添加 copy 4.png" alt="添加">
+                    <img src="@/assets/img/添加 copy 4.png" alt="添加" />
                   </div>
                 </div>
               </el-form-item>
             </div>
             <div class="img-sty4">
-              <img src="@/assets/img/添加 copy 4@2x.png" alt="添加">
+              <img src="@/assets/img/添加 copy 4@2x.png" alt="添加" />
             </div>
           </div>
         </div>
-
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -296,90 +418,91 @@
 </template>
 
 <script>
-
 export default {
-  name: 'LeftNav',
+  name: "LeftNav",
   props: {
     catalogList: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
       defaultProps: {
-        children: 'children2',
-        label: 'catalogName'
+        children: "children2",
+        label: "catalogName",
       },
       treeSelectData: {},
       // 弹出框数据
       dialogFormVisible: false,
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
         delivery: false,
         type: [],
-        resource: '',
-        desc: ''
+        resource: "",
+        desc: "",
       },
-      radio: '3',
-      radio1: '1',
-      formLabelWidth: '120px',
-      options: [{
-        value: '选项1',
-        label: '黄金糕糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      value1: '',
-      input1: '',
-      input2: '',
-      input3: '',
-      input4: ''
+      radio: "3",
+      radio1: "1",
+      formLabelWidth: "120px",
+      options: [
+        {
+          value: "选项1",
+          label: "黄金糕糕",
+        },
+        {
+          value: "选项2",
+          label: "双皮奶",
+        },
+        {
+          value: "选项3",
+          label: "蚵仔煎",
+        },
+        {
+          value: "选项4",
+          label: "龙须面",
+        },
+        {
+          value: "选项5",
+          label: "北京烤鸭",
+        },
+      ],
+      value1: "",
+      input1: "",
+      input2: "",
+      input3: "",
+      input4: "",
       // 弹出框数据
-    }
+    };
   },
-  watch: {
-  },
-  created() {
-    
-  },
+  watch: {},
+  created() {},
   methods: {
     handleNodeClick(data) {
-      this.treeSelectData = data
-      this.$emit('changeTempTabList', data)
+      this.treeSelectData = data;
+      this.$emit("changeTempTabList", data);
     },
     operateData(type) {
-      if (type === 'new') {
-        this.$emit('operateData', { catalogName: '', sort: 1 }, type)
+      if (type === "new") {
+        this.$emit("operateData", { catalogName: "", sort: 1 }, type);
       } else {
-        this.$emit('operateData', this.treeSelectData, type)
+        this.$emit("operateData", this.treeSelectData, type);
       }
     },
-    async getCataloglistfun(){
-      let res=await getCatalogList()
-      console.log(res); 
-    }
-
-  }
-}
+    async getCataloglistfun() {
+      let res = await getCatalogList();
+      console.log(res);
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
-.el1{
-      max-width: 392px;
+.el1 {
+  max-width: 392px;
   min-width: 140px;
 }
 
@@ -389,36 +512,40 @@ export default {
   color: #999999;
   font-size: 14px;
   box-sizing: border-box;
-    max-width: 392px;
+  max-width: 392px;
   min-width: 140px;
 }
 
-.formClassificate{
-    height: calc(100vh - 246px);
-    margin-bottom: 0;
-    overflow-y: auto;
-    border-top: 0;
-    background-color: #fff;
-    .modifyOperating {
-        padding: 12px;
-        margin-bottom: 12px;
-        text-align: right;
-        border-bottom: solid 1px #e6e6e6;
-        i {
-            font-size: 26px;
-            margin: 0px 4px;
-            cursor: pointer;
-        }
-        .el-icon-edit-outline{
-         color:  #146d95;
-        }
-        .el-icon-delete{
-          color: #ef3e4a;
-        }
+.formClassificate {
+  height: calc(100vh - 246px);
+  margin-bottom: 0;
+  overflow-y: auto;
+  border-top: 0;
+  background-color: #fff;
+
+  .modifyOperating {
+    padding: 12px;
+    margin-bottom: 12px;
+    text-align: right;
+    border-bottom: solid 1px #e6e6e6;
+
+    i {
+      font-size: 26px;
+      margin: 0px 4px;
+      cursor: pointer;
     }
+
+    .el-icon-edit-outline {
+      color: #146d95;
+    }
+
+    .el-icon-delete {
+      color: #ef3e4a;
+    }
+  }
 }
 
-.flex-fa{
+.flex-fa {
   height: 42px;
   line-height: 42px;
   display: flex;
@@ -432,94 +559,113 @@ export default {
   color: #333333;
   border-bottom: 1px solid #d1d1d1;
 }
-.header-ml{
+
+.header-ml {
   padding-left: 14px;
   padding-top: 2px;
 }
-.header-icon{
+
+.header-icon {
   padding-right: 22px;
   color: #999999;
   padding-top: 2px;
 }
-.icon-color{
+
+.icon-color {
   color: #00CECB;
 }
-.left-icon{
+
+.left-icon {
   float: left;
   margin-right: 8px;
 }
-.right-icon{
+
+.right-icon {
   // float: right;
   position: absolute;
   right: 12px;
   top: 10px;
   padding-right: 12px;
 }
-.form-item:hover{
+
+.form-item:hover {
   color: #00CECB;
-  background:rgba(0,206,203,0.11);
+  background: rgba(0, 206, 203, 0.11);
   box-sizing: border-box;
   border-right: 2px solid #00CECB;
-  .right-icon{
+
+  .right-icon {
     right: 10px;
   }
 }
 
 // 弹出框眼熟
-.alert{
+.alert {
   font-size: 16px;
 }
-/deep/.el-dialog__header{
-  background:rgba(245,245,245,1);
+
+/deep/.el-dialog__header {
+  background: rgba(245, 245, 245, 1);
 }
-/deep/.el-radio-group{
+
+/deep/.el-radio-group {
   margin-top: 11px;
 }
-/deep/.el-form-item__label{
+
+/deep/.el-form-item__label {
   font-weight: 500;
 }
-.alert-top{
+
+.alert-top {
   margin-top: 5px;
   font-size: 14px;
 }
-.tjsx-form-select{
+
+.tjsx-form-select {
   width: 96px;
 }
-.tjsx-form-select2{
+
+.tjsx-form-select2 {
   width: 170px;
   height: 28px;
 }
-.tjsx-form-select3{
+
+.tjsx-form-select3 {
   margin-left: 4px;
-  width:196px;
+  width: 196px;
   height: 28px;
 }
-.img-sty{
+
+.img-sty {
   padding-top: 4px;
   float: right;
   margin-right: 146px;
 }
-.img-sty1{
+
+.img-sty1 {
   padding-top: 4px;
   float: right;
   margin-right: 232px;
 }
-.img-sty2{
+
+.img-sty2 {
   padding-top: 4px;
   float: right;
   margin-right: 234px;
 }
-.img-sty3{
+
+.img-sty3 {
   padding-top: 4px;
   float: right;
   margin-right: 32px;
 }
-.img-sty4{
 
+.img-sty4 {
   float: right;
   margin: 50px 50px 0 0;
 }
-.alert-form-sjfw{
+
+.alert-form-sjfw {
   margin-top: 12px;
   margin-right: 20px;
   padding-top: 4px;
@@ -531,36 +677,43 @@ export default {
   background: #fafafa;
   font-size: 14px;
 }
-.input-margin{
+
+.input-margin {
   margin-top: 4px;
 }
-.margin{
+
+.margin {
   margin-left: 4px;
 }
-.border-sty{
+
+.border-sty {
   width: 100%;
   padding: 0 0 10px 0;
 }
-.p-margin{
+
+.p-margin {
   padding-top: 6px;
-  font-size:14px;
-  font-family:PingFangSC-Regular,PingFan;
-  font-weight:400;
-  color:rgba(153,153,153,1);
-  line-height:20px;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFan;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 20px;
 }
-.select-left{
+
+.select-left {
   width: 222px;
 }
-.select-right{
+
+.select-right {
   width: 84px;
 }
-.glb-text{
+
+.glb-text {
   float: right;
   padding-right: 110px;
-
 }
-.alert-form-sjfw{
+
+.alert-form-sjfw {
   margin-top: 12px;
   margin-right: 20px;
   padding-top: 4px;
@@ -572,15 +725,18 @@ export default {
   background: #fafafa;
   font-size: 14px;
 }
-.tjsx-margin{
+
+.tjsx-margin {
   margin-top: 6px;
 }
-.jygs-sty{
+
+.jygs-sty {
   float: right;
   padding-right: 10px;
   height: 50px;
 }
-.alert-form-tjsx{
+
+.alert-form-tjsx {
   margin-top: 12px;
   margin-right: 20px;
   padding-top: 4px;
@@ -592,26 +748,30 @@ export default {
   background: #fafafa;
   font-size: 14px;
 }
-/deep/.el-dialog__footer{
-  background:rgba(249,249,249,1);
+
+/deep/.el-dialog__footer {
+  background: rgba(249, 249, 249, 1);
 }
-.border-background{
-  width:600px;
-  height:130px;
-  background:rgba(238,238,238,0.18);
-  border:1px dashed rgba(151,151,151,1);
+
+.border-background {
+  width: 600px;
+  height: 130px;
+  background: rgba(238, 238, 238, 0.18);
+  border: 1px dashed rgba(151, 151, 151, 1);
   margin-left: 20px;
 }
-.border-background1{
-  width:440px;
-  height:114px;
-  background:rgba(238,238,238,0.18);
-  border:1px dashed rgba(151,151,151,1);
+
+.border-background1 {
+  width: 440px;
+  height: 114px;
+  background: rgba(238, 238, 238, 0.18);
+  border: 1px dashed rgba(151, 151, 151, 1);
   margin-left: 44px;
   margin-top: 8px;
   float: left;
 }
-.jygs-margin{
-  margin-top:6px;
+
+.jygs-margin {
+  margin-top: 6px;
 }
 </style>

@@ -16,17 +16,22 @@
           router
           :default-active="activePath"
         >
-          <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
+          <el-submenu
+            :index="item.id + ''"
+            v-for="item in menulist"
+            :key="item.id"
+          >
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>{{item.authName}}</span>
+              <span>{{ item.authName }}</span>
             </template>
             <el-menu-item
               :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
               @click="saveNavState('/' + subItem.path)"
-            >{{subItem.authName}}</el-menu-item>
+              >{{ subItem.authName }}</el-menu-item
+            >
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -48,7 +53,7 @@ export default {
       menulist: [],
       activePath: "",
       // 是否折叠
-      isCollapse: false
+      isCollapse: false,
     };
   },
   methods: {
@@ -62,10 +67,10 @@ export default {
     },
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
-    }
+    },
   },
   created() {
-    gethomedata().then(res => {
+    gethomedata().then((res) => {
       if (res.data.meta.status !== 200) {
         this.$message.error(res.data.meta.msg);
       } else {
@@ -73,12 +78,15 @@ export default {
       }
     });
     this.activePath = window.sessionStorage.getItem("activePath");
-  }
+  },
 };
 </script>
 <style scoped>
+.el-menu {
+  border-right-width: 0;
+}
 .el-container {
-  height: 98vh;
+  height: 90vh;
 }
 .el-header {
   display: flex;
